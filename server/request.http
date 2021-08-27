@@ -1,0 +1,29 @@
+POST http://localhost:3000/api/admin/createNewAccount
+Content-Type: application/json
+
+{
+    "username":"admin1",
+    "password":"admin"
+}
+
+###
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+    "username":"admin1",
+    "password":"admin"
+}
+
+###
+POST http://localhost:3000/api/admin/updatePandemicData
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTI4OTU5ZTNjODg3MzM5MjM1Nzc2ZTMiLCJpYXQiOjE2MzAwNTUxNjl9.EmL3s8eSheb9GLFqSUvQ3RlPYUFAxp-Gkfn7ixnLsdM
+
+{
+    "title":"Hello",
+    "content":"Cap nhat tinh hinh dich ngay 27/8 ... 1"
+}
+
+###
+GET http://localhost:3000/api/public/displayPandemicFullData
