@@ -47,6 +47,8 @@ const AuthContextProvider = ({children}) => {
                 localStorage.setItem(LOCAL_STORAGE_TOKEN_NAME,response.data.accessToken)
             }
 
+            await loadUser()
+
             return response.data 
         } catch (error) {
             if(error.response.data) {
@@ -59,7 +61,15 @@ const AuthContextProvider = ({children}) => {
         }
     }
 
-    const authContextData = {loginUser, authState}
+    const logoutUser = () => {
+        localStorage.removeItem(LOCAL_STORAGE_TOKEN_NAME)
+        dispatch({type: 'SET_AUTH', payload: {
+            isAuthenticated: false,
+            user: null
+        }})
+    }
+
+    const authContextData = {loginUser, logoutUser, authState}
 
     return (
         <AuthContext.Provider value={authContextData}>

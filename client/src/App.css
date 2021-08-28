@@ -1,6 +1,10 @@
-body {
+.login-background {
+  position: relative;
   background: #007bff;
   background: linear-gradient(to right, #0062e6, #33aeff);
+  height: 100%;
+  margin: auto;
+  display: flex;
 }
 
 .login-inner {
@@ -10,4 +14,11 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+html,
+body,
+head {
+  height: 100%;
+  margin: 0;
 }

@@ -14,7 +14,7 @@ router.get('/', verifyToken, async(req,res) =>{
         })
         res.json({
             success: true,
-            fetchUser
+            user: fetchUser
         })
     } catch (error) {
         console.log(error)

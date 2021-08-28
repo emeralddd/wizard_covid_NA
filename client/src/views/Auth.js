@@ -34,22 +34,23 @@ function Auth({authRoute}) {
 
     return (
         <>
-            <Container>
-                <Card className='text-center border-0 shadow rounded-3 my-5 mx-auto'>
-                    <Card.Title className='p-4 p-sm-4'><h1>Login</h1></Card.Title>
-                    <Card.Body> 
-                        <Row>
-                            <Col sm={7}>
-                                <Image src='https://i.pinimg.com/originals/39/ce/06/39ce061587549e3ef7f043ddb118f79b.jpg' height='500px' rounded/>
-                            </Col>
-                            <Col sm={5}>
-                                {body}
-                            </Col>
-                        </Row>
-                    </Card.Body>
-                </Card>
-            </Container>
-        
+            <div className='login-background'>
+                    <Container> 
+                        <Card className='text-center border-0 shadow rounded-3 my-5 mx-auto'>
+                            <Card.Title className='p-4 p-sm-4'><h1>Login</h1></Card.Title>
+                            <Card.Body> 
+                                <Row>
+                                    <Col sm={7}>
+                                        <Image src='https://i.pinimg.com/originals/39/ce/06/39ce061587549e3ef7f043ddb118f79b.jpg' height='500px' rounded/>
+                                    </Col>
+                                    <Col sm={5}>
+                                        {body}
+                                    </Col>
+                                </Row>
+                            </Card.Body>
+                        </Card>
+                    </Container> 
+            </div>
         </>
     )
 }
