@@ -1,0 +1,13 @@
+body {
+  background: #007bff;
+  background: linear-gradient(to right, #0062e6, #33aeff);
+}
+
+.login-inner {
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

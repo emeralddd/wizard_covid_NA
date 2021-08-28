@@ -3,6 +3,27 @@ const router = express.Router()
 const argon2 = require('argon2')
 const USER = require('../models/user')
 const jwt = require('jsonwebtoken')
+const verifyToken = require('../middleware/auth')
+
+router.get('/', verifyToken, async(req,res) =>{
+    try {
+        const fetchUser = await USER.findById(req.userId).select('-password')
+        if(!fetchUser) return res.status(400).json({
+            success: false,
+            message: 'Lua nhau a'
+        })
+        res.json({
+            success: true,
+            fetchUser
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            success: false,
+            message: 'Server dang gap loi'
+        })
+    }
+})
 
 //Login
 router.post('/login', async (req,res) => {

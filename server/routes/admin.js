@@ -54,6 +54,7 @@ router.post('/createNewAccount', verifyToken, async (req,res) => {
     }
 })
 
+//Update Pandemic Data
 router.post('/updatePandemicData', verifyToken, async (req,res) => {
     const {title,content} = req.body
     if(!title || !content)
