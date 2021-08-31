@@ -7,7 +7,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3000/api/auth/login
+POST http://localhost:3030/api/auth/login
 Content-Type: application/json
 
 {
@@ -27,3 +27,57 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTI4O
 
 ###
 GET http://localhost:3000/api/public/displayPandemicFullData
+
+###
+PUT http://localhost:3030/api/admin/updateAnalytics
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTI4OTU5ZTNjODg3MzM5MjM1Nzc2ZTMiLCJpYXQiOjE2MzAzNDMwNTZ9.gUlWMg7CPS_8VeDCTOriuCgn3UVh2YjUzhF7wp-qq7s
+
+{
+    "position":"tpvinh",
+    "total":5,
+    "death":0,
+    "cured":2
+}
+
+###
+GET http://localhost:3030/api/admin/displayAccountList
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTI4OTU5ZTNjODg3MzM5MjM1Nzc2ZTMiLCJpYXQiOjE2MzAzNDMwNTZ9.gUlWMg7CPS_8VeDCTOriuCgn3UVh2YjUzhF7wp-qq7s
+
+
+###
+DELETE http://localhost:3030/api/admin/deletePandemicData/abcdef1231231231231231
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTI4OTU5ZTNjODg3MzM5MjM1Nzc2ZTMiLCJpYXQiOjE2MzAzNDMwNTZ9.gUlWMg7CPS_8VeDCTOriuCgn3UVh2YjUzhF7wp-qq7s
+
+
+###
+POST http://localhost:3030/api/admin/createBlogPost
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTI4OTU5ZTNjODg3MzM5MjM1Nzc2ZTMiLCJpYXQiOjE2MzAwNTUxNjl9.EmL3s8eSheb9GLFqSUvQ3RlPYUFAxp-Gkfn7ixnLsdM
+
+{
+    "title":"Hello",
+    "content":"Huong dan cach phong dich"
+}
+
+
+###
+POST http://localhost:3030/api/admin/createNEWS
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTI4OTU5ZTNjODg3MzM5MjM1Nzc2ZTMiLCJpYXQiOjE2MzAwNTUxNjl9.EmL3s8eSheb9GLFqSUvQ3RlPYUFAxp-Gkfn7ixnLsdM
+
+{
+    "title":"Thong tin dich benh, gian cach xa hoi",
+    "content":""
+}
+
+###
+DELETE http://localhost:3030/api/admin/deleteBlogPost/612dc91df01e64f200bb6d38
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTI4OTU5ZTNjODg3MzM5MjM1Nzc2ZTMiLCJpYXQiOjE2MzAwNTUxNjl9.EmL3s8eSheb9GLFqSUvQ3RlPYUFAxp-Gkfn7ixnLsdM
+
+###
+GET http://localhost:3030/api/public/displayNEWS
+
+
+###
+GET http://localhost:3030/api/public/displayBlogPost

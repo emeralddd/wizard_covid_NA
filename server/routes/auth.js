@@ -5,6 +5,7 @@ const USER = require('../models/user')
 const jwt = require('jsonwebtoken')
 const verifyToken = require('../middleware/auth')
 
+//Verify User
 router.get('/', verifyToken, async(req,res) =>{
     try {
         const fetchUser = await USER.findById(req.userId).select('-password')
@@ -56,7 +57,8 @@ router.post('/login', async (req,res) => {
 
         const accessToken = jwt.sign(
             {userId: fetchUser._id},
-            process.env.SECRET_TOKEN
+            process.env.SECRET_TOKEN,
+            {expiresIn: "7d"}
         )
 
         res.json({
