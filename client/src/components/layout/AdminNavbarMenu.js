@@ -28,6 +28,21 @@ const AdminNavbarMenu = () => {
                         <Nav.Link className='font-weight-bolder text-white' to='/' as={Link}>
                             Homepage
                         </Nav.Link>
+                        <Nav.Link className='font-weight-bolder text-white' to='/usermanager' as={Link}>
+                            Accounts
+                        </Nav.Link>
+                        <Nav.Link className='font-weight-bolder text-white' to='/' as={Link}>
+                            Posts
+                        </Nav.Link>
+                        <Nav.Link className='font-weight-bolder text-white' to='/' as={Link}>
+                            News
+                        </Nav.Link>
+                        <Nav.Link className='font-weight-bolder text-white' to='/' as={Link}>
+                            Analytic
+                        </Nav.Link>
+                        <Nav.Link className='font-weight-bolder text-white' to='/' as={Link}>
+                            Pandemic Details
+                        </Nav.Link>
                     </Nav>
 
                     <Nav>
