@@ -11,7 +11,7 @@ POST http://localhost:3030/api/auth/login
 Content-Type: application/json
 
 {
-    "username":"admin1",
+    "username":"admin",
     "password":"admin"
 }
 
@@ -53,10 +53,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTI4O
 ###
 POST http://localhost:3030/api/admin/createBlogPost
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTI4OTU5ZTNjODg3MzM5MjM1Nzc2ZTMiLCJpYXQiOjE2MzAwNTUxNjl9.EmL3s8eSheb9GLFqSUvQ3RlPYUFAxp-Gkfn7ixnLsdM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTI4OTQ4YThmYjJmYzU0YzMyOTFkMjIiLCJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjMwNjA3NDA3LCJleHAiOjE2MzEyMTIyMDd9.IFHPOEOenNwEhHhHme_DnjEZINxMUUd2CO_4czL9vwA
 
 {
-    "title":"Hello",
+    "title":"Aloaloss",
     "content":"Huong dan cach phong dich"
 }
 
@@ -64,11 +64,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTI4O
 ###
 POST http://localhost:3030/api/admin/createNEWS
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTI4OTU5ZTNjODg3MzM5MjM1Nzc2ZTMiLCJpYXQiOjE2MzAwNTUxNjl9.EmL3s8eSheb9GLFqSUvQ3RlPYUFAxp-Gkfn7ixnLsdM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTI4OTQ4YThmYjJmYzU0YzMyOTFkMjIiLCJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjMwNjA3NDA3LCJleHAiOjE2MzEyMTIyMDd9.IFHPOEOenNwEhHhHme_DnjEZINxMUUd2CO_4czL9vwA
 
 {
-    "title":"Thong tin dich benh, gian cach xa hoi",
-    "content":""
+    "title":"Vinh chi thi 16 tu 6/9",
+    "content":"ABCXYZ"
 }
 
 ###

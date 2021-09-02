@@ -15,8 +15,7 @@ const Post = new Schema({
             required: true
         },
         userCreated: {
-            type: Schema.Types.ObjectId,
-            ref: 'users'
+            type: Schema.Types.Mixed
         }
 
     }

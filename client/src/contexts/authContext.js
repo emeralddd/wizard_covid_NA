@@ -1,7 +1,7 @@
-import { createContext, useReducer,useEffect } from 'react'
+import { createContext, useReducer,useEffect,useState } from 'react'
 import { AuthReducer } from '../reducer/authReducer'
 import axios from 'axios'
-import {apiURL,LOCAL_STORAGE_TOKEN_NAME} from './constants'
+import {apiURL,LOCAL_STORAGE_TOKEN_NAME,SET_AUTH} from '../utils/VariableName'
 import SetAuthToken from '../utils/SetAuthToken'
 
 export const AuthContext = createContext()
@@ -22,7 +22,7 @@ const AuthContextProvider = ({children}) => {
             const response = await axios.get(`${apiURL}/auth`)
 
             if(response.data.success) {
-                dispatch({type: 'SET_AUTH', payload: {
+                dispatch({type: SET_AUTH, payload: {
                     isAuthenticated: true, 
                     user: response.data.user
                 }})
@@ -31,7 +31,7 @@ const AuthContextProvider = ({children}) => {
         } catch (error) {
             localStorage.removeItem(LOCAL_STORAGE_TOKEN_NAME)
             SetAuthToken(null)
-            dispatch({type: 'SET_AUTH', payload: {
+            dispatch({type: SET_AUTH, payload: {
                 isAuthenticated: false,
                 user: null
             }})
@@ -63,7 +63,7 @@ const AuthContextProvider = ({children}) => {
 
     const logoutUser = () => {
         localStorage.removeItem(LOCAL_STORAGE_TOKEN_NAME)
-        dispatch({type: 'SET_AUTH', payload: {
+        dispatch({type: SET_AUTH, payload: {
             isAuthenticated: false,
             user: null
         }})

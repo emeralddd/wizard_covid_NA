@@ -1,14 +1,16 @@
+import { USER_LOADED_FAIL,USER_LOADED_SUCCESS } from "../utils/VariableName"
+
 export const UserReducer = (state,action) => {
     const {type,payload} = action
     switch (type) {
-        case 'USER_LOADED_SUCCESS':
+        case USER_LOADED_SUCCESS:
             return {
                 ...state,
                 users: payload,
                 usersLoading: false
             }
         
-        case 'USER_LOADED_FAIL':
+        case USER_LOADED_FAIL:
             return {
                 ...state,
                 users: [],

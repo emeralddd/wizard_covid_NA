@@ -4,6 +4,7 @@ const router = express.Router()
 const LIST = require('../models/pandemic')
 const POST = require('../models/post')
 const NEWS = require('../models/news')
+const ANA = require('../models/analytic')
 
 //Display Pandemic Full Data
 router.get('/displayPandemicFullData', async (req,res) => {
@@ -49,6 +50,24 @@ router.get('/displayNEWS', async (req,res) => {
         res.json({
             success: true,
             listNews
+        })
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({
+            success: false,
+            message: 'Server dang gap loi'
+        })
+    }
+})
+
+//Display Analytic
+router.get('/displayAnalytic', async (req,res) => {
+    try {
+        const listAna = await ANA.find({})
+
+        res.json({
+            success: true,
+            listAna
         })
     } catch (err) {
         console.log(err)

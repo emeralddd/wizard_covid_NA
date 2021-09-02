@@ -68,7 +68,14 @@ router.post('/updatePandemicData', verifyToken, async (req,res) => {
     }
 
     try {
-        const newUpdateData = new PANDEMIC({title,content,userCreated: req.userId})
+        const newUpdateData = new PANDEMIC({
+            title,
+            content,
+            userCreated: {
+                '_id': req.userId,
+                'username': req.username
+            }
+        })
         await newUpdateData.save();
 
         res.json({
@@ -196,7 +203,14 @@ router.post('/createBlogPost', verifyToken, async (req,res) => {
     }
 
     try {
-        const newBlogPost = new POST({title,content,userCreated:req.UserId})
+        const newBlogPost = new POST({
+            title,
+            content,
+            userCreated: {
+                '_id':req.userId,
+                'username': req.username
+            }
+        })
         await newBlogPost.save()
 
         res.json({
@@ -260,7 +274,15 @@ router.post('/createNEWS', verifyToken, async (req,res) => {
     }
 
     try {
-        const newNews = new NEWS({title,content,userCreated:req.UserId})
+        const newNews = new NEWS({
+            title,
+            content,
+            userCreated: {
+                '_id':req.userId,
+                'username':req.username
+            }
+        })
+
         await newNews.save()
 
         res.json({

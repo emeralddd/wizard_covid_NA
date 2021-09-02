@@ -56,7 +56,10 @@ router.post('/login', async (req,res) => {
         }
 
         const accessToken = jwt.sign(
-            {userId: fetchUser._id},
+            {
+                userId: fetchUser._id,
+                username: fetchUser.username
+            },
             process.env.SECRET_TOKEN,
             {expiresIn: "7d"}
         )

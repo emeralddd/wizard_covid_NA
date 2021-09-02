@@ -1,40 +1,32 @@
 import {useContext, useEffect} from 'react'
-import {UserContext} from '../contexts/userContext'
+import {DetailsContext} from '../contexts/detailsContext'
 import Spinner from 'react-bootstrap/Spinner'
 import Table from 'react-bootstrap/Table'
 import Card from 'react-bootstrap/Card'
-import SingleUser from '../components/items/SingleUser'
-import { AuthContext } from '../contexts/authContext'
+import SinglePost from '../components/items/SinglePost'
 
-const UserManager = () => {
+const DetailsManager = () => {
 
-    const {userState: {users, usersLoading}, getUsers} = useContext(UserContext)
-    const {authState: {user:{username}}} = useContext(AuthContext)
+    const {detailsState: {details, detailsLoading}, getDetails} = useContext(DetailsContext)
 
-    useEffect(() => getUsers(), [])
+    useEffect(() => getDetails(), [])
 
     let body = null
-    let createAccount = null
-    if(username==='admin') {
-        createAccount = (
-            <>
-                <h2>Create Account</h2>
-            </>
-        )
-    }
-
-    if(usersLoading) {
+    let createDetails = (
+        <h3>Create Details</h3>
+    )
+    if(detailsLoading) {
         body = (
             <div className="d-flex-justify-content-center mt-2">
                 <Spinner animation='border' variant='info' />
             </div>
         )
-    } else if(users.length === 0) {
+    } else if(details.length === 0) {
         body = (
             <>
                 <Card className='text-center mx-5 my-5'>
                     <Card.Header as='h1'>
-                        Dieu nay se khong xay ra dau =)))
+                        Khum cóa cái diễn biến lào hớt!
                     </Card.Header>
                 </Card>
             </>
@@ -45,13 +37,15 @@ const UserManager = () => {
                 <Table responsive>
                     <thead>
                         <tr>
-                            <th>Tên đăng nhập</th>
-                            <th>Thời điểm tạo</th>
+                            <th>Tiêu đề</th>
+                            <th>Nội dung</th>
+                            <th>Tác giả</th>
+                            <th>Thời điểm đăng</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {users.map(user => (
-							<SingleUser item={user} />
+                        {details.map(detail => (
+							<SinglePost item={detail} />
 					    ))}
                     </tbody>
                     
@@ -62,11 +56,11 @@ const UserManager = () => {
 
     return (
         <div className="m-5">
-            <h1>Danh sách Tài Khoản</h1>
-            {createAccount}
+            <h1>Danh sách Diễn Biến Dịch</h1>
+            {createDetails}
             {body}
         </div>
     )
 }
 
-export default UserManager
+export default DetailsManager

@@ -3,8 +3,11 @@ import { useContext } from 'react'
 import { AuthContext } from '../../contexts/authContext'
 import Spinner from 'react-bootstrap/Spinner'
 import AdminNavbarMenu from '../layout/AdminNavbarMenu'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
+import Container from 'react-bootstrap/Container'
 
-const Protectedroute = ({component:Component,...rest}) => {
+const ProtectedRoute = ({component:Component,...rest}) => {
 
     const {authState: {authLoading, isAuthenticated}} = useContext(AuthContext)
     
@@ -28,4 +31,4 @@ const Protectedroute = ({component:Component,...rest}) => {
     )
 }
 
-export default Protectedroute
+export default ProtectedRoute
