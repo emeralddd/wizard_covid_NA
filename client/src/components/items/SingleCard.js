@@ -13,7 +13,7 @@ const SingleCard = ({item: {_id, position, total, death, cured}}) => (
 		<Card.Body>
 			<Card.Title>
 				<Col>
-					<p className='postition'>{position}</p>
+					<p className='position'>{position}</p>
 					<Badge
 						pill
 						variant={

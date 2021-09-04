@@ -4,6 +4,8 @@ import Spinner from 'react-bootstrap/Spinner'
 import Table from 'react-bootstrap/Table'
 import Card from 'react-bootstrap/Card'
 import SinglePost from '../components/items/SinglePost'
+import Button from 'react-bootstrap/Button'
+import {Link} from 'react-router-dom'
 
 const NEWSManager = () => {
 
@@ -13,7 +15,11 @@ const NEWSManager = () => {
 
     let body = null
     let createNEWS = (
-        <h3>CreateNEWS</h3>
+        <Link to='/createnews'>
+            <Button variant = 'warning' size='sl' className='ml-2 mt-3'>
+                Đăng Tin Tức Mới
+            </Button>
+        </Link>
     )
     if(newsLoading) {
         body = (
@@ -44,7 +50,7 @@ const NEWSManager = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {news.map(subnews => (
+                        {news.slice(0).reverse().map(subnews => (
 							<SinglePost item={subnews} />
 					    ))}
                     </tbody>
@@ -55,7 +61,7 @@ const NEWSManager = () => {
     }
 
     return (
-        <div className="m-5">
+        <div className="mx-4 mt-3">
             <h1>Danh sách Tin tức</h1>
             {createNEWS}
             {body}

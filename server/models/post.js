@@ -16,6 +16,9 @@ const Post = new Schema({
         },
         userCreated: {
             type: Schema.Types.Mixed
+        },
+        imageURL: {
+            type: String
         }
 
     }

@@ -15,8 +15,7 @@ const AdminNavbarMenu = () => {
     const logout = () => logoutUser()
 
     return (
-        <div>
-            <Navbar expand='lg' bg='primary' variant='dark'>
+            <Navbar expand='lg' bg='primary' variant='dark' className='p-1'>
                 <Container>
                     <Navbar.Brand className='font-weight-bolder text-white'>
                     Logo
@@ -59,7 +58,7 @@ const AdminNavbarMenu = () => {
                         <Nav.Link className='font-weight-bolder text-white' disable='true'>
                             Welcome {username}
                         </Nav.Link>
-                        <Button variant='secondary' className='font-weight-bolder text-black mr-2' onClick={logout}>
+                        <Button variant='secondary' className='font-weight-bolder text-black mr-1' onClick={logout}>
                                 Logout
                         </Button>
                     </Nav>
@@ -67,7 +66,6 @@ const AdminNavbarMenu = () => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-        </div>
     )
 }
 

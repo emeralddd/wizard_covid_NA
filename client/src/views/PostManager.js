@@ -4,6 +4,8 @@ import Spinner from 'react-bootstrap/Spinner'
 import Table from 'react-bootstrap/Table'
 import Card from 'react-bootstrap/Card'
 import SinglePost from '../components/items/SinglePost'
+import {Link} from 'react-router-dom'
+import Button from 'react-bootstrap/Button'
 
 const PostManager = () => {
 
@@ -13,7 +15,11 @@ const PostManager = () => {
 
     let body = null
     let createPost = (
-        <h3>CreatePost</h3>
+        <Link to='/createpost'>
+            <Button variant = 'warning' size='sl' className='ml-2 mt-3'>
+                Đăng Bài Viết Mới
+            </Button>
+        </Link>
     )
     if(postsLoading) {
         body = (
@@ -41,10 +47,11 @@ const PostManager = () => {
                             <th>Nội dung</th>
                             <th>Tác giả</th>
                             <th>Thời điểm đăng</th>
+                            <th>Ảnh đại diện</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {posts.map(post => (
+                        {posts.slice(0).reverse().map(post => (
 							<SinglePost item={post} />
 					    ))}
                     </tbody>
@@ -55,7 +62,7 @@ const PostManager = () => {
     }
 
     return (
-        <div className="m-5">
+        <div className="mx-4 mt-3">
             <h1>Danh sách Bài Viết</h1>
             {createPost}
             {body}

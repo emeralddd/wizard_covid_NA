@@ -17,6 +17,10 @@ import NEWSManager from './views/NEWSManager'
 import DetailsManager from './views/DetailsManager'
 import AnalyticManager from './views/AnalyticManager'
 import './App.css'
+import PostList from './views/PostList'
+import NEWSList from './views/NEWSList'
+import CreateNEWS from './views/CreateNEWS'
+import CreatePost from './views/CreatePost'
 
 function App() {
   return (
@@ -31,6 +35,10 @@ function App() {
                     <Route exact path='/login' render= {props => <Auth {...props} authRoute='login' />} />
                     <PublicRoute exact path='/' component={Homepage} />
                     <PublicRoute exact path='/pandemicmap' component={PandemicMap} />
+                    <PublicRoute exact path='/postlist' component={PostList} />
+                    <PublicRoute exact path='/newslist' component={NEWSList} />
+                    <ProtectedRoute exact path='/createnews' component={CreateNEWS} />
+                    <ProtectedRoute exact path='/createpost' component={CreatePost} />
                     <ProtectedRoute exact path='/dashboard' component={Dashboard} />
                     <ProtectedRoute exact path='/usermanager' component={UserManager} />
                     <ProtectedRoute exact path='/postmanager' component={PostManager} />

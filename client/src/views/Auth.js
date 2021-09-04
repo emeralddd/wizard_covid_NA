@@ -10,8 +10,6 @@ import {useContext} from 'react'
 import {Redirect} from 'react-router-dom'
 import Spinner from 'react-bootstrap/Spinner'
 
-
-
 function Auth({authRoute}) {
 
     //console.log(AuthContext)

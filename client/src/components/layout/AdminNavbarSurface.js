@@ -13,7 +13,7 @@ const AdminNavbarSurface = () => {
 
     return (
         <div>
-            <Navbar expand='lg' bg='primary' variant='dark'>
+            <Navbar expand='lg' bg='primary' variant='dark' className='p-1'>
                 <Container>
                 <Navbar.Toggle aria-controls='responsive-navbar-nav' />
                 <Navbar.Collapse id='responsive-navbar-nav'>

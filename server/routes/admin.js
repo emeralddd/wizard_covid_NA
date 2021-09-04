@@ -193,9 +193,9 @@ router.delete('/deletePandemicData/:id', verifyToken, async (req,res) => {
 
 //Create Blog Post
 router.post('/createBlogPost', verifyToken, async (req,res) => {
-    const {title,content} = req.body
+    const {title,content,imageURL} = req.body
 
-    if(!title || !content) {
+    if(!title || !content || !imageURL) {
         return res.status(400).json({
             success: false,
             message: 'Thieu thong tin'
@@ -209,7 +209,8 @@ router.post('/createBlogPost', verifyToken, async (req,res) => {
             userCreated: {
                 '_id':req.userId,
                 'username': req.username
-            }
+            },
+            imageURL
         })
         await newBlogPost.save()
 

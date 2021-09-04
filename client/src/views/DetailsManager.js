@@ -55,7 +55,7 @@ const DetailsManager = () => {
     }
 
     return (
-        <div className="m-5">
+        <div className="mx-4 mt-3">
             <h1>Danh sách Diễn Biến Dịch</h1>
             {createDetails}
             {body}

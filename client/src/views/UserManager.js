@@ -61,7 +61,7 @@ const UserManager = () => {
     }
 
     return (
-        <div className="m-5">
+        <div className="mx-4 mt-3">
             <h1>Danh sách Tài Khoản</h1>
             {createAccount}
             {body}
