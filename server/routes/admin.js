@@ -95,7 +95,7 @@ router.post('/updatePandemicData', verifyToken, async (req,res) => {
 
 //Update Analytics Data
 router.put('/updateAnalytics', verifyToken, async (req,res) => {
-    const {position,total,death,cured} = req.body
+    const {position,total,death,cured,coordinates} = req.body
     if(!position)
     {
         return res.status(400).json({
@@ -105,7 +105,7 @@ router.put('/updateAnalytics', verifyToken, async (req,res) => {
     }
 
     try {
-        let newUpdateAnalytic = {total:total,death:death,cured:cured}
+        let newUpdateAnalytic = {total:total,death:death,cured:cured,coordinates:coordinates}
 
 		const newUpdateCondition = {position:position}
 

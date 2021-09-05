@@ -21,7 +21,8 @@ import PostList from './views/PostList'
 import NEWSList from './views/NEWSList'
 import CreateNEWS from './views/CreateNEWS'
 import CreatePost from './views/CreatePost'
-
+import PandemicDetails from './views/PandemicDetails'
+import CreateDetails from './views/CreateDetails'
 function App() {
   return (
     <AuthContextProvider>
@@ -37,6 +38,8 @@ function App() {
                     <PublicRoute exact path='/pandemicmap' component={PandemicMap} />
                     <PublicRoute exact path='/postlist' component={PostList} />
                     <PublicRoute exact path='/newslist' component={NEWSList} />
+                    <PublicRoute exact path='/pandemicdetails' component={PandemicDetails} />
+                    <ProtectedRoute exact path='/createdetails' component={CreateDetails} />
                     <ProtectedRoute exact path='/createnews' component={CreateNEWS} />
                     <ProtectedRoute exact path='/createpost' component={CreatePost} />
                     <ProtectedRoute exact path='/dashboard' component={Dashboard} />

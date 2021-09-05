@@ -4,6 +4,8 @@ import Spinner from 'react-bootstrap/Spinner'
 import Table from 'react-bootstrap/Table'
 import Card from 'react-bootstrap/Card'
 import SinglePost from '../components/items/SinglePost'
+import Button from 'react-bootstrap/Button'
+import { Link } from 'react-router-dom'
 
 const DetailsManager = () => {
 
@@ -13,7 +15,11 @@ const DetailsManager = () => {
 
     let body = null
     let createDetails = (
-        <h3>Create Details</h3>
+        <Link to='/createdetails'>
+            <Button variant = 'warning' size='sl' className='ml-2 mt-3'>
+                Đăng Diễn Biến Mới
+            </Button>
+        </Link>
     )
     if(detailsLoading) {
         body = (

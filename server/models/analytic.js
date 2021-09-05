@@ -17,6 +17,10 @@ const Case = new Schema({
         cured: {
             type: Number,
             required: true
+        },
+        coordinates: {
+            type: Schema.Types.Mixed,
+            required: true
         }
     }
 )

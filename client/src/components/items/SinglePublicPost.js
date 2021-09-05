@@ -13,7 +13,7 @@ const SinglePublicPost = ({item: {_id, title, content, dateCreated, userCreated,
             </Card.Title>
 
             <Card.Text>
-                <Row className='row-cols-2 g-4 mx-auto mt-3'>
+                <Row className='g-4 mx-auto mt-3'>
                     <Col xs={2}>
                         <img src={imageURL} alt='post_image' width='100px' height='auto' />
                     </Col>
