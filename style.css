@@ -1,0 +1,230 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+html, body{
+    font-family: sans-serif;
+    background: url(/img/nen.jpg);
+}
+
+li{
+    list-style-type: none;
+}
+ #nav{
+     width: 100%;
+     background: #ffffff;
+     height: 50px;
+     
+ }
+ 
+ #nav .container{
+     margin-left: 0px;
+     width: auto;
+     margin: 0px;
+ }
+ #nav .container ul.menu{
+     list-style-type: none;
+     margin: 0px;
+     padding: 1px;
+     float: left;
+     width: 1350px;
+     font-size: 16px;
+ }
+
+
+ #nav .container ul.menu li{
+     display: inline-block;
+ }
+
+ #nav .container ul.menu li a{
+     text-decoration: none;
+     height: 80px;
+     display: block;
+     line-height: 80px;
+     color: grey;
+     padding-right: 60px;
+     font-family: times;
+ }
+
+ 
+#banner img{
+    width: 100%;
+}
+ #banner{
+     width: 100%;
+     height: 450px;
+     overflow: hidden;
+     position: relative;
+ }
+
+ #banner div.overlay{
+     display: block;
+     width: 100%;
+     height: 450px;
+     background: #000;
+     position: absolute;
+     top:0px;
+     left: 0px;
+     opacity: .1;
+ }
+
+ #feature{
+     width: 100%;
+ }
+
+ #feature .container{
+     width: 1140px;
+     margin: 60px auto;
+     min-height: 300px;
+
+ }
+
+ #feature .container .feature-left,
+ #feature .container .feature-right{
+     float: left;
+ }
+
+ #feature .container .feature-left{
+     width: 750px;
+     
+ }
+
+ #feature .container .feature-left .card{
+     background: #f0f9fd;
+     float: left;
+     width: 320px;
+     height: 320px;
+     display: block;
+     margin-right: 50px;
+     padding: 20px 30px;
+     margin-bottom: 50px;
+ }
+ #feature .container .feature-left .desc{
+     padding: 15px 15px 30px 0px;
+ }
+
+ #feature .container .feature-left .card .icon{
+     text-align: center;
+     color: #1b9ce3;
+     font-size: 100px;
+     margin-top: -40px;
+ }
+ 
+ #feature .container .feature-left .card h2{
+     text-align: center;
+     color: #233e62;
+
+ }
+
+ #feature .container .feature-left .card p{
+     line-height: 15px;
+     color: gray;
+     text-align: center;
+     font-size: 15px;
+ }
+
+h2.feature{
+    color: #233e62;
+    font-weight: 700;
+    font-size: 32px;
+}
+
+ #feature .container .feature-right{
+     width: 360px;
+     padding: 15px;
+     border:5px solid #d1ebf9;
+ }
+
+ #feature .container .feature-right img{
+     width: 100%;
+     margin-bottom: 25px;
+ }
+ 
+ #feature .container .feature-right h3{
+     font-size: 18px;
+     color:#233e62;
+     margin-bottom: 20px;
+
+ }
+
+ #feature .container .feature-right p{
+     color: gray;
+     text-align: justify;
+     line-height: 25px;
+ }
+ #feature .container .feature-right a.contact-us{
+     display: block;
+     text-decoration: none;
+     width: 120px;
+     height: 50px;
+     border-radius: 20px;
+     background: royalblue;
+     line-height: 50px;
+     text-align: center;
+     color: #FFF;
+     margin-top:15px;
+     font-size: 12px;
+ }
+
+ .guildance{
+     width: 100%;
+     height: 150px;
+     background: url(/nice.jpg) no-repeat center center;
+     background-size: cover;
+     position: relative;
+     clear: both;
+     z-index: 0;
+ }
+
+ .guildance::after{
+     position: absolute;
+     top: 0px;
+     left: 0px;
+     bottom: 0px;
+     right: 0px;
+     content: '';
+     z-index: -1;
+     opacity: .7;
+     background:linear-gradient(to right,#1566ad 0%,#1b9de3 100%);
+ }
+ .guildance h2{
+     text-align: center;
+     color: #FFF;
+     line-height: 150px;
+ }
+ .gird{
+     width: 1200px;
+     max-width: 100%;
+     margin: 0 auto;
+ }
+ .gird__row{
+     display: flex;
+     flex-wrap: wrap;
+     margin-left: -5px;
+     margin-right: -5px;
+ }
+ .gird__column-2-4{
+     padding-left: 5px;
+     padding-right: 5px;
+     width: 33%;
+ }
+ .footer__heading{
+     font-size: 15px;
+ }
+ .menu_down1{
+    width: 150px;
+    position: absolute;
+    top: 60px;
+    font-size: 10px;
+    text-align: center;
+    display: none;
+}
+ .menu_down1  li{
+    text-align: center;
+    padding: 0px;
+    
+}
+#nav .container .menu .menu_link1:hover .menu_down1 {
+    display: block;
+}
