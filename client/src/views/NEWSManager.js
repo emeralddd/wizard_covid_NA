@@ -12,7 +12,7 @@ import Toast from 'react-bootstrap/Toast'
 const NEWSManager = () => {
 
     const {
-        newsState: {_news, newsLoading}, 
+        newsState: {_news, news, newsLoading}, 
         getNEWS,
         showToast: {show,message,type},
         setShowToast
