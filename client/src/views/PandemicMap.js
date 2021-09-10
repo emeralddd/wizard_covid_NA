@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/no-webpack-loader-syntax
+import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker'
 import {useRef, useEffect, useState, useContext} from 'react'
 import MapBox from 'mapbox-gl'
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -6,8 +8,6 @@ import {AnalyticContext} from '../contexts/analyticContext'
 import Table from 'react-bootstrap/Table'
 import Badge from 'react-bootstrap/Badge'
 MapBox.accessToken = process.env.REACT_APP_MAPBOX_TOKEN
-// eslint-disable-next-line import/no-webpack-loader-syntax
-import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
 
 const PandemicMap = () => {
 
