@@ -12,7 +12,7 @@ import Toast from 'react-bootstrap/Toast'
 const NEWSManager = () => {
 
     const {
-        newsState: {news, newsLoading}, 
+        newsState: {_news, newsLoading}, 
         getNEWS,
         showToast: {show,message,type},
         setShowToast
@@ -70,7 +70,7 @@ const NEWSManager = () => {
 
     return (
         <>
-            {news!==null? <UpdateNEWSModal />: null}
+            {_news!==null? <UpdateNEWSModal />: null}
             <div className="mx-4 mt-3">
                 <h1>Danh sách Tin tức</h1>
                 {createNEWS}
