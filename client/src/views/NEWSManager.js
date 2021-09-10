@@ -6,10 +6,17 @@ import Card from 'react-bootstrap/Card'
 import SinglePost from '../components/items/SinglePost'
 import Button from 'react-bootstrap/Button'
 import {Link} from 'react-router-dom'
+import UpdateNEWSModal from '../components/form/UpdateNEWSModal'
+import Toast from 'react-bootstrap/Toast'
 
 const NEWSManager = () => {
 
-    const {newsState: {news, newsLoading}, getNEWS} = useContext(NEWSContext)
+    const {
+        newsState: {news, newsLoading}, 
+        getNEWS,
+        showToast: {show,message,type},
+        setShowToast
+    } = useContext(NEWSContext)
 
     useEffect(() => getNEWS(), [])
 
@@ -43,6 +50,7 @@ const NEWSManager = () => {
                 <Table responsive>
                     <thead>
                         <tr>
+                            <th className='text-center'>#</th>
                             <th>Tiêu đề</th>
                             <th>Nội dung</th>
                             <th>Tác giả</th>
@@ -50,8 +58,8 @@ const NEWSManager = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {news.slice(0).reverse().map(subnews => (
-							<SinglePost item={subnews} />
+                        {news.slice(0).reverse().map(_news => (
+							<SinglePost key={_news._id} item={_news} type='news'/>
 					    ))}
                     </tbody>
                     
@@ -61,11 +69,34 @@ const NEWSManager = () => {
     }
 
     return (
-        <div className="mx-4 mt-3">
-            <h1>Danh sách Tin tức</h1>
-            {createNEWS}
-            {body}
-        </div>
+        <>
+            {news!==null? <UpdateNEWSModal />: null}
+            <div className="mx-4 mt-3">
+                <h1>Danh sách Tin tức</h1>
+                {createNEWS}
+                {body}
+            </div>
+            <Toast
+				show={show}
+				style={{ 
+                    position: 'fixed', 
+                    top: '15%', 
+                    right: '15px' 
+                }}
+				className={`bg-${type} text-white`}
+				onClose={setShowToast.bind(this, {
+					show: false,
+					message: '',
+					type: null
+				})}
+				delay={2000}
+				autohide
+			>
+				<Toast.Body>
+					<strong>{message}</strong>
+				</Toast.Body>
+			</Toast>
+        </>
     )
 }
 

@@ -6,10 +6,17 @@ import Card from 'react-bootstrap/Card'
 import SinglePost from '../components/items/SinglePost'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
+import UpdateDetailsModal from '../components/form/UpdateDetailsModal'
+import Toast from 'react-bootstrap/Toast'
 
 const DetailsManager = () => {
 
-    const {detailsState: {details, detailsLoading}, getDetails} = useContext(DetailsContext)
+    const {
+        detailsState: {details, detailsLoading, detail}, 
+        getDetails,
+        showToast: {show,message,type},
+        setShowToast
+    } = useContext(DetailsContext)
 
     useEffect(() => getDetails(), [])
 
@@ -43,6 +50,7 @@ const DetailsManager = () => {
                 <Table responsive>
                     <thead>
                         <tr>
+                            <th className='text-center'>#</th>
                             <th>Tiêu đề</th>
                             <th>Nội dung</th>
                             <th>Tác giả</th>
@@ -50,8 +58,8 @@ const DetailsManager = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {details.map(detail => (
-							<SinglePost item={detail} />
+                        {details.slice(0).reverse().map(detail => (
+							<SinglePost key={detail._id} item={detail} type='detail'/>
 					    ))}
                     </tbody>
                     
@@ -61,11 +69,34 @@ const DetailsManager = () => {
     }
 
     return (
-        <div className="mx-4 mt-3">
-            <h1>Danh sách Diễn Biến Dịch</h1>
-            {createDetails}
-            {body}
-        </div>
+        <>
+            {detail!==null? <UpdateDetailsModal />: null}
+            <div className="mx-4 mt-3">
+                <h1>Danh sách Diễn Biến Dịch</h1>
+                {createDetails}
+                {body}
+            </div>
+            <Toast
+				show={show}
+				style={{ 
+                    position: 'fixed', 
+                    top: '15%', 
+                    right: '15px' 
+                }}
+				className={`bg-${type} text-white`}
+				onClose={setShowToast.bind(this, {
+					show: false,
+					message: '',
+					type: null
+				})}
+				delay={2000}
+				autohide
+			>
+				<Toast.Body>
+					<strong>{message}</strong>
+				</Toast.Body>
+			</Toast>
+        </>
     )
 }
 

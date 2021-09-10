@@ -1,4 +1,11 @@
-import { POST_LOADED_FAIL, POST_LOADED_SUCCESS } from "../utils/VariableName"
+import { 
+    POST_LOADED_FAIL, 
+    POST_LOADED_SUCCESS,
+    ADD_POST, 
+    DEL_POST,
+    FIND_POST,
+    UPDATE_POST
+} from "../utils/VariableName"
 
 export const PostReducer = (state,action) => {
     const {type,payload} = action
@@ -17,6 +24,34 @@ export const PostReducer = (state,action) => {
                 postsLoading: false
             }
         
+        case ADD_POST:
+            return {
+                ...state,
+                posts: [...state.posts,payload]
+            }
+
+        case DEL_POST:
+            return {
+                ...state,
+                posts: state.posts.filter(post => post._id !== payload)
+            }
+        
+        case FIND_POST: 
+            return {
+                ...state,
+                post:payload
+            }
+        
+        case UPDATE_POST:
+            const newPosts = state.posts.map(post =>
+				post._id === payload._id ? payload : post
+			)
+
+            return {
+                ...state,
+                posts: newPosts
+            }
+
         default: 
             return state
     }

@@ -1,4 +1,4 @@
-import {useState, useContext, useEffect} from 'react'
+import {useContext, useEffect} from 'react'
 import {DetailsContext} from '../contexts/detailsContext'
 import Spinner from 'react-bootstrap/Spinner'
 import Card from 'react-bootstrap/Card'

@@ -19,6 +19,11 @@ const Post = new Schema({
         },
         imageURL: {
             type: String
+        },
+        slug: {
+            type: String,
+            required: true,
+            unique: true
         }
 
     }

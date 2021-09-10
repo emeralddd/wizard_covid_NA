@@ -1,29 +1,16 @@
-import {useState, useContext, useEffect} from 'react'
-import axios from 'axios'
-import { apiURL } from '../../utils/VariableName'
+import {useContext, useState} from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import AlertMessage from '../layout/AlertMessage'
+import { DetailsContext } from '../../contexts/detailsContext'
 const CreateDetailsForm = () => {
+
+    const {addDetails} = useContext(DetailsContext)
+
     const [createForm,setCreateForm] = useState({
-        title: '',
+        title: 'THÔNG BÁO VỀ  CA DƯƠNG TÍNH MỚI VỚI COVID-19 TẠI NGHỆ AN',
         content: ''
     })
-
-    const createD = async createForm => {
-        try {
-            const response = await axios.post(`${apiURL}/admin/updatePandemicData`,createForm)
-            return response.data 
-        } catch (error) {
-            if(error.response.data) {
-                return error.response.data
-            }
-            else return {
-                success: false, 
-                message: error.message
-            }
-        }
-    }
 
     const [alert,setAlert] = useState(null)
 
@@ -33,28 +20,23 @@ const CreateDetailsForm = () => {
 
     const create = async event => {
         event.preventDefault()
+        const {success,message} = await addDetails(createForm) 
+        if(success) {
+            setAlert({
+                type: 'success',
+                message: message
+            })
 
-        try {
-            const createData = await createD(createForm)
-            if(!createData.success) {
-                setAlert({
-                    type: 'danger',
-                    message: createData.message
-                })
-            } else {
-                setAlert({
-                    type: 'success',
-                    message: createData.message
-                })
-
-                setCreateForm({
-                    title: '',
-                    content: ''
-                })
-            }
-        } catch (error) {
-            console.log(error)
-        } 
+            setCreateForm({
+                title: 'THÔNG BÁO VỀ  CA DƯƠNG TÍNH MỚI VỚI COVID-19 TẠI NGHỆ AN',
+                content: ''
+            })
+        } else {
+            setAlert({
+                type: 'danger',
+                message: message
+            })
+        }
     }
     return (
         <>

@@ -38,15 +38,12 @@ router.post('/createNewAccount', verifyToken, async (req,res) => {
         const newUser = new USER({username,password:hasedPassword})
         await newUser.save()
 
-        const accessToken = jwt.sign(
-            {userId: newUser._id},
-            process.env.SECRET_TOKEN
-        )
+        delete newUser.password
 
         res.json({
             success: true,
             message: 'Tao tai khoan thanh cong',
-            accessToken
+            user: newUser
         })
     } catch (err) {
         console.log(err)
@@ -57,8 +54,69 @@ router.post('/createNewAccount', verifyToken, async (req,res) => {
     }
 })
 
-//Update Pandemic Data
-router.post('/updatePandemicData', verifyToken, async (req,res) => {
+//Update Analytics Data
+router.put('/updateAnalytics', verifyToken, async (req,res) => {
+    const {position,total,death,cured,cure} = req.body
+    if(!position) {
+        return res.status(400).json({
+            success: false, 
+            message: 'Chua chon don vi!'
+        })
+    }
+    console.log(position)
+    try {
+        let newUpdateAnalytic = {total:total,death:death,cured:cured,cure:cure}//coordinates:coordinates}
+
+		const newUpdateCondition = {position:position}
+
+		newUpdateAnalytic = await ANALYTIC.findOneAndUpdate(
+			newUpdateCondition,
+			newUpdateAnalytic,
+			{ new: true }
+		)
+        
+        if(!newUpdateAnalytic) {
+            return res.status(401).json({
+                success: false,
+                message: 'Khong co don vi do'
+            })
+        }
+
+        res.json({
+            success: true,
+            message: 'Cap nhat so lieu thanh cong',
+            update: newUpdateAnalytic
+        })
+
+    } catch(err) {
+        console.log(err)
+        res.status(500).json({
+            success: false,
+            message: 'Server dang gap loi'
+        })
+    }
+})
+
+//Display Account List
+router.get('/displayAccountList', verifyToken, async (req,res) => {
+    try {
+        const listAccount = await USER.find({}).select('-password')
+
+        res.json({
+            success: true,
+            listAccount
+        })
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({
+            success: false,
+            message: 'Server dang gap loi'
+        })
+    }
+})
+
+//Create Pandemic Data
+router.post('/createPandemicData', verifyToken, async (req,res) => {
     const {title,content} = req.body
     if(!title || !content) {
         return res.status(400).json({
@@ -93,40 +151,121 @@ router.post('/updatePandemicData', verifyToken, async (req,res) => {
     }
 })
 
-//Update Analytics Data
-router.put('/updateAnalytics', verifyToken, async (req,res) => {
-    const {position,total,death,cured,coordinates} = req.body
-    if(!position)
-    {
+//Create Blog Post
+router.post('/createBlogPost', verifyToken, async (req,res) => {
+    const {title,content,imageURL,slug} = req.body
+
+    if(!title || !content || !imageURL || !slug) {
         return res.status(400).json({
-            success: false, 
-            message: 'Chua chon don vi!'
+            success: false,
+            message: 'Thieu thong tin'
+        })
+    }
+
+    const fetchPost = await POST.findOne({slug})
+    if(fetchPost) {
+        return res.status(400).json({
+            success: false,
+            message: 'Slug da bi trung'
         })
     }
 
     try {
-        let newUpdateAnalytic = {total:total,death:death,cured:cured,coordinates:coordinates}
+        const newBlogPost = new POST({
+            title,
+            content,
+            userCreated: {
+                '_id':req.userId,
+                'username': req.username
+            },
+            imageURL,
+            slug
+        })
+        await newBlogPost.save()
 
-		const newUpdateCondition = {position:position}
+        res.json({
+            success: true,
+            message: 'Tao bai viet thanh cong',
+            post: newBlogPost
+        })
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({
+            success: false,
+            message: 'Server dang gap loi'
+        })
+    }
+})
 
-		newUpdateAnalytic = await ANALYTIC.findOneAndUpdate(
-			newUpdateCondition,
-			newUpdateAnalytic,
-			{ new: true }
-		)
+//Create NEWS
+router.post('/createNEWS', verifyToken, async (req,res) => {
+    const {title,content,slug} = req.body
+
+    if(!title || !content || !slug) {
+        return res.status(400).json({
+            success: false,
+            message: 'Thieu thong tin'
+        })
+    }
+
+    const fetchNEWS = await NEWS.findOne({slug})
+    if(fetchNEWS) {
+        return res.status(400).json({
+            success: false,
+            message: 'Slug da bi trung'
+        })
+    }
+
+    try {
+        const newNews = new NEWS({
+            title,
+            content,
+            userCreated: {
+                '_id':req.userId,
+                'username':req.username
+            },
+            slug
+        })
+
+        await newNews.save()
+
+        res.json({
+            success: true,
+            message: 'Tao tin tuc thanh cong',
+            news: newNews
+        })
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({
+            success: false,
+            message: 'Server dang gap loi'
+        })
+    }
+})
+
+//Delete Blog Post
+router.delete('/deleteBlogPost/:id', verifyToken, async (req,res) => {
+    try {
+        if(String(req.params.id).length!=24) {
+            return res.status(401).json({
+                success: false,
+                message: 'Dung co hack!'
+            })
+        }
+		const deleteCondition = {_id: req.params.id}
+		const deletePost = await POST.findOneAndDelete(deleteCondition)
         
-        if(!newUpdateAnalytic)
+        if(!deletePost)
         {
             return res.status(401).json({
                 success: false,
-                message: 'Khong co don vi do'
+                message: 'Khong co bai viet do'
             })
         }
 
         res.json({
             success: true,
-            message: 'Cap nhat so lieu thanh cong',
-            update: newUpdateAnalytic
+            message: 'Xoa bai viet thanh cong'
         })
 
     } catch(err) {
@@ -138,16 +277,32 @@ router.put('/updateAnalytics', verifyToken, async (req,res) => {
     }
 })
 
-//Display Account List
-router.get('/displayAccountList', verifyToken, async (req,res) => {
+//Delete NEWS
+router.delete('/deleteNEWS/:id', verifyToken, async (req,res) => {
     try {
-        const listAccount = await USER.find({}).select('-password')
+        if(String(req.params.id).length!=24) {
+            return res.status(401).json({
+                success: false,
+                message: 'Dung co hack!'
+            })
+        }
+		const deleteCondition = {_id: req.params.id}
+		const deleteNews = await NEWS.findOneAndDelete(deleteCondition)
+        
+        if(!deleteNews)
+        {
+            return res.status(401).json({
+                success: false,
+                message: 'Khong co tin tuc do'
+            })
+        }
 
         res.json({
             success: true,
-            listAccount
+            message: 'Xoa tin tuc thanh cong'
         })
-    } catch (err) {
+
+    } catch(err) {
         console.log(err)
         res.status(500).json({
             success: false,
@@ -191,58 +346,35 @@ router.delete('/deletePandemicData/:id', verifyToken, async (req,res) => {
     }
 })
 
-//Create Blog Post
-router.post('/createBlogPost', verifyToken, async (req,res) => {
-    const {title,content,imageURL} = req.body
+//Update Post
+router.put('/updateBlogPost/:id', verifyToken, async (req,res) => {
+    const {title,content,slug,imageURL} = req.body
 
-    if(!title || !content || !imageURL) {
+    if(!title || !content || !slug || !imageURL) {
         return res.status(400).json({
             success: false,
-            message: 'Thieu thong tin'
+            message: 'Chua du thong tin'
         })
     }
 
     try {
-        const newBlogPost = new POST({
-            title,
-            content,
-            userCreated: {
-                '_id':req.userId,
-                'username': req.username
-            },
-            imageURL
-        })
-        await newBlogPost.save()
-
-        res.json({
-            success: true,
-            message: 'Tao bai viet thanh cong',
-            post: newBlogPost
-        })
-    } catch (err) {
-        console.log(err)
-        res.status(500).json({
-            success: false,
-            message: 'Server dang gap loi'
-        })
-    }
-})
-
-//Delete Blog Post
-router.delete('/deleteBlogPost/:id', verifyToken, async (req,res) => {
-    try {
-        if(String(req.params.id).length!=24)
-        {
+        if(String(req.params.id).length!=24) {
             return res.status(401).json({
                 success: false,
                 message: 'Dung co hack!'
             })
         }
-		const deleteCondition = {_id: req.params.id}
-		const deletePost = await POST.findOneAndDelete(deleteCondition)
+
+        let editPost = {title,content,slug,imageURL}
+
+		const editCondition = {_id: req.params.id}
+		editPost = await POST.findOneAndUpdate(
+            editCondition,
+            editPost,
+            { new: true }
+        )
         
-        if(!deletePost)
-        {
+        if(!editPost) {
             return res.status(401).json({
                 success: false,
                 message: 'Khong co bai viet do'
@@ -251,7 +383,8 @@ router.delete('/deleteBlogPost/:id', verifyToken, async (req,res) => {
 
         res.json({
             success: true,
-            message: 'Xoa bai viet thanh cong'
+            message: 'Sua bai viet thanh cong',
+            post: editPost
         })
 
     } catch(err) {
@@ -263,58 +396,35 @@ router.delete('/deleteBlogPost/:id', verifyToken, async (req,res) => {
     }
 })
 
-//Create NEWS
-router.post('/createNEWS', verifyToken, async (req,res) => {
-    const {title,content} = req.body
+//Update NEWS
+router.put('/updateNEWS/:id', verifyToken, async (req,res) => {
+    const {title,content,slug} = req.body
 
-    if(!title || !content) {
+    if(!title || !content || !slug) {
         return res.status(400).json({
             success: false,
-            message: 'Thieu thong tin'
+            message: 'Chua du thong tin'
         })
     }
 
     try {
-        const newNews = new NEWS({
-            title,
-            content,
-            userCreated: {
-                '_id':req.userId,
-                'username':req.username
-            }
-        })
-
-        await newNews.save()
-
-        res.json({
-            success: true,
-            message: 'Tao tin tuc thanh cong',
-            post: newNews
-        })
-    } catch (err) {
-        console.log(err)
-        res.status(500).json({
-            success: false,
-            message: 'Server dang gap loi'
-        })
-    }
-})
-
-//Delete NEWS
-router.delete('/deleteNEWS/:id', verifyToken, async (req,res) => {
-    try {
-        if(String(req.params.id).length!=24)
-        {
+        if(String(req.params.id).length!=24) {
             return res.status(401).json({
                 success: false,
                 message: 'Dung co hack!'
             })
         }
-		const deleteCondition = {_id: req.params.id}
-		const deleteNews = await NEWS.findOneAndDelete(deleteCondition)
+
+        let editNEWS = {title,content,slug}
+
+		const editCondition = {_id: req.params.id}
+		editNEWS = await NEWS.findOneAndUpdate(
+            editCondition,
+            editNEWS,
+            { new: true }
+        )
         
-        if(!deleteNews)
-        {
+        if(!editNEWS) {
             return res.status(401).json({
                 success: false,
                 message: 'Khong co tin tuc do'
@@ -323,7 +433,58 @@ router.delete('/deleteNEWS/:id', verifyToken, async (req,res) => {
 
         res.json({
             success: true,
-            message: 'Xoa tin tuc thanh cong'
+            message: 'Sua tin tuc thanh cong',
+            news: editNEWS
+        })
+
+    } catch(err) {
+        console.log(err)
+        res.status(500).json({
+            success: false,
+            message: 'Server dang gap loi'
+        })
+    }
+})
+
+//Update Pandemic Details
+router.put('/updatePandemicData/:id', verifyToken, async (req,res) => {
+    const {title,content} = req.body
+
+    if(!title || !content) {
+        return res.status(400).json({
+            success: false,
+            message: 'Chua du thong tin'
+        })
+    }
+
+    try {
+        if(String(req.params.id).length!=24) {
+            return res.status(401).json({
+                success: false,
+                message: 'Dung co hack!'
+            })
+        }
+
+        let editData = {title,content}
+
+		const editCondition = {_id: req.params.id}
+		editData = await PANDEMIC.findOneAndUpdate(
+            editCondition,
+            editData,
+            { new: true }
+        )
+        
+        if(!editData) {
+            return res.status(401).json({
+                success: false,
+                message: 'Khong co tin tuc do'
+            })
+        }
+
+        res.json({
+            success: true,
+            message: 'Sua tin tuc thanh cong',
+            data: editData
         })
 
     } catch(err) {

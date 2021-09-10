@@ -1,11 +1,10 @@
-import {useState, useContext, useEffect} from 'react'
+import {useContext, useEffect} from 'react'
 import {PostContext} from '../contexts/postContext'
 import Spinner from 'react-bootstrap/Spinner'
 import Card from 'react-bootstrap/Card'
 import SinglePublicPost from '../components/items/SinglePublicPost'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-import ReactPaginate from 'react-paginate';
 
 const PostList = () => {
 
@@ -20,7 +19,6 @@ const PostList = () => {
         pageCount: 0,
         currentData: []
     })*/
-    console.log(postsLoading)
     /*useEffect(() => {
         if(!postsLoading)
         {

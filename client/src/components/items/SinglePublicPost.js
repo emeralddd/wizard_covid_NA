@@ -3,12 +3,12 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import dateFormat from 'dateformat'
 
-const SinglePublicPost = ({item: {_id, title, content, dateCreated, userCreated, imageURL}}) => (
+const SinglePublicPost = ({item: {_id, title, content, dateCreated, userCreated, imageURL, slug}}) => (
     <Card className='shadow' border='info'>
         <Card.Body>
             <Card.Title>
                 <Col>
-                    <h4>{title}</h4>
+                    <h4><a href={'/post/'+slug}>{title}</a></h4>
                 </Col>
             </Card.Title>
 

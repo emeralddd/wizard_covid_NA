@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom'
 import { AuthContext } from '../../contexts/authContext'
 import {OtherContext} from '../../contexts/otherContext'
 import { useContext,useState } from 'react'
+import LOGO from '../../assets/logo_bw.png'
 
 
 const AdminNavbarMenu = () => {
@@ -17,7 +18,7 @@ const AdminNavbarMenu = () => {
             <Navbar expand='lg' bg='primary' variant='dark' className='p-1'>
                 <Container>
                     <Navbar.Brand className='font-weight-bolder text-white'>
-                    Logo
+                        <img src={LOGO} alt='logo' height='64px' width='auto' />
                     </Navbar.Brand>
 
                     <Navbar.Toggle aria-controls='responsive-navbar-nav' />

@@ -7,7 +7,7 @@ const SinglePublicPost = ({item: {_id, title, content, dateCreated}}) => {
         <Card className='shadow text-white' bg='warning'>
             <Card.Body>
                 <Card.Header>
-                    {dateFormat(dateCreated, "hh:mm:ss - dd/mm/yyyy")}
+                    {dateFormat(dateCreated, "HH:MM:ss - dd/mm/yyyy")}
                 </Card.Header>
                 <Card.Title className='mt-2'>
                     {title}

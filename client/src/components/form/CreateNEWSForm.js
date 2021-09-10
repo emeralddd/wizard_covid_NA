@@ -1,60 +1,44 @@
-import {useState, useContext, useEffect} from 'react'
-import axios from 'axios'
-import { apiURL } from '../../utils/VariableName'
+import {useContext, useState} from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import AlertMessage from '../layout/AlertMessage'
+import { NEWSContext } from '../../contexts/newsContext'
 const CreateNEWSForm = () => {
+
+    const {addNEWS} = useContext(NEWSContext)
+    
     const [createForm,setCreateForm] = useState({
         title: '',
-        content: ''
+        content: '',
+        slug: ''
     })
-
-    const createN = async createForm => {
-        try {
-            const response = await axios.post(`${apiURL}/admin/createNEWS`,createForm)
-            return response.data 
-        } catch (error) {
-            if(error.response.data) {
-                return error.response.data
-            }
-            else return {
-                success: false, 
-                message: error.message
-            }
-        }
-    }
 
     const [alert,setAlert] = useState(null)
 
-    const {title,content} = createForm
+    const {title,content,slug} = createForm
 
     const onChangeCreateForm = event => setCreateForm({...createForm, [event.target.name]:event.target.value})
 
     const create = async event => {
         event.preventDefault()
+        const {success,message} = await addNEWS(createForm)
+        if(success) {
+            setAlert({
+                type: 'success',
+                message: message
+            })
 
-        try {
-            const createData = await createN(createForm)
-            if(!createData.success) {
-                setAlert({
-                    type: 'danger',
-                    message: createData.message
-                })
-            } else {
-                setAlert({
-                    type: 'success',
-                    message: createData.message
-                })
-
-                setCreateForm({
-                    title: '',
-                    content: ''
-                })
-            }
-        } catch (error) {
-            console.log(error)
-        } 
+            setCreateForm({
+                title: '',
+                content: '',
+                slug: ''
+            })
+        } else {
+            setAlert({
+                type: 'danger',
+                message: message
+            })
+        }
     }
     return (
         <>
@@ -67,7 +51,15 @@ const CreateNEWSForm = () => {
                             name='title' 
                             value={title}
                             onChange={onChangeCreateForm} />
-                        </Form.Group>
+                    </Form.Group>
+                    <Form.Group className='mb-3'>
+                        <Form.Control 
+                            type='text' 
+                            placeholder='Slug' 
+                            name='slug' 
+                            value={slug}
+                            onChange={onChangeCreateForm} />
+                    </Form.Group>
                     <Form.Group className='mb-3'>
                         <Form.Control 
                             as='textarea' 
@@ -77,6 +69,7 @@ const CreateNEWSForm = () => {
                             value={content}
                             onChange={onChangeCreateForm} />
                     </Form.Group>
+                    
                 <Button className='mb-3' variant = 'success' type='submit'>Đăng bài</Button>
             </Form>
         </>

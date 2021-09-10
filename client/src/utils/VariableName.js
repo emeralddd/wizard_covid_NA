@@ -23,3 +23,35 @@ export const DETAILS_LOADED_FAIL = 'DETAILS_LOADED_FAIL'
 export const ANA_LOADED_SUCCESS = 'ANA_LOADED_SUCCESS'
 
 export const ANA_LOADED_FAIL = 'ANA_LOADED_FAIL'
+
+export const ADD_POST = 'ADD_POST'
+
+export const ADD_NEWS = 'ADD_NEWS'
+
+export const ADD_DETAIL = 'ADD_DETAIL'
+
+export const ADD_USER = 'ADD_USER'
+
+export const ANA_UPDATE = 'ANA_UPDATE'
+
+export const DEL_POST = 'DEL_POST'
+
+export const DEL_NEWS = 'DEL_NEWS'
+
+export const DEL_DETAIL = 'DEL_DETAIL'
+
+export const FIND_POST = 'FIND_POST'
+
+export const UPDATE_POST = 'UPDATE_POST'
+
+export const FIND_DETAIL = 'FIND_DETAIL'
+
+export const UPDATE_DETAIL = 'UPDATE_DETAIL'
+
+export const FIND_NEWS = 'FIND_NEWS'
+
+export const UPDATE_NEWS = 'UPDATE_NEWS'
+
+export const FIND_ANA = 'FIND_ANA'
+
+export const UPDATE_ANA = 'UPDATE_ANA'

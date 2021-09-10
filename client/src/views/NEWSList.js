@@ -1,4 +1,4 @@
-import {useState, useContext, useEffect} from 'react'
+import {useContext, useEffect} from 'react'
 import {NEWSContext} from '../contexts/newsContext'
 import Spinner from 'react-bootstrap/Spinner'
 import Card from 'react-bootstrap/Card'

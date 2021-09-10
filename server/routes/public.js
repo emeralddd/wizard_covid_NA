@@ -78,4 +78,40 @@ router.get('/displayAnalytic', async (req,res) => {
     }
 })
 
+//Find each Post
+router.get('/getEachPost/:id', async (req,res) => {
+    const id = req.params.id
+    const fetchPost = await POST.findOne({slug:id})
+    if(fetchPost) {
+        return res.json({
+            success: true,
+            fetchPost
+        })
+    } else {
+        return res.status(404).json({
+            success: false,
+            message: "Not Found"
+        })
+    }
+    
+})
+
+//Find each NEWS
+router.get('/getEachNEWS/:id', async (req,res) => {
+    const id = req.params.id
+    const fetchNEWS = await NEWS.findOne({slug:id})
+    if(fetchNEWS) {
+        return res.json({
+            success: true,
+            fetchNEWS
+        })
+    } else {
+        return res.status(404).json({
+            success: false,
+            message: "Not Found"
+        })
+    }
+    
+})
+
 module.exports = router

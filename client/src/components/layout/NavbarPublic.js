@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 import {Link} from 'react-router-dom'
+import LOGO from '../../assets/logo_wt.png'
 
 const NavbarPublic = () => {
     const [show, setShow] = useState(false);
@@ -14,10 +15,10 @@ const NavbarPublic = () => {
 
     return (
         <>
-            <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+            <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className='p-0'>
                 <Container className='justify-content-center'>
         	        <Navbar.Brand to='/' as={Link}>
-                        Logo
+                        <img src={LOGO} alt='logo' height='80px' width='auto' className='mr-3' /> <span>NACDDEU</span>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls='responsive-navbar-nav' />
                     <Navbar.Collapse id='responsive-navbar-nav'>

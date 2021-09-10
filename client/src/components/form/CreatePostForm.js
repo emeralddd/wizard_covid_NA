@@ -1,63 +1,50 @@
-import {useState, useContext, useEffect} from 'react'
-import axios from 'axios'
-import { apiURL } from '../../utils/VariableName'
+import {useContext, useState} from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import AlertMessage from '../layout/AlertMessage'
+import { PostContext } from '../../contexts/postContext'
 const CreatePostForm = () => {
+
+    const {addPost} = useContext(PostContext)
+
     const [createForm,setCreateForm] = useState({
         title: '',
         content: '',
-        imageURL: ''
+        imageURL: '',
+        slug: ''
     })
-
-    const createN = async createForm => {
-        try {
-            const response = await axios.post(`${apiURL}/admin/createBlogPost`,createForm)
-            return response.data 
-        } catch (error) {
-            if(error.response.data) {
-                return error.response.data
-            }
-            else return {
-                success: false, 
-                message: error.message
-            }
-        }
-    }
 
     const [alert,setAlert] = useState(null)
 
-    const {title,content,imageURL} = createForm
+    const {title,content,imageURL,slug} = createForm
 
     const onChangeCreateForm = event => setCreateForm({...createForm, [event.target.name]:event.target.value})
 
     const create = async event => {
         event.preventDefault()
 
-        try {
-            const createData = await createN(createForm)
-            if(!createData.success) {
-                setAlert({
-                    type: 'danger',
-                    message: createData.message
-                })
-            } else {
-                setAlert({
-                    type: 'success',
-                    message: createData.message
-                })
+        const {success, message} = await addPost(createForm)
 
-                setCreateForm({
-                    title: '',
-                    content: '',
-                    imageURL: ''
-                })
-            }
-        } catch (error) {
-            console.log(error)
-        } 
+        if(success) {
+            setAlert({
+                type: 'success',
+                message: message
+            })
+
+            setCreateForm({
+                title: '',
+                content: '',
+                imageURL: '',
+                slug: ''
+            })
+        } else {
+            setAlert({
+                type: 'danger',
+                message: message
+            })
+        }
     }
+
     return (
         <>
             <Form onSubmit={create}>
@@ -69,7 +56,15 @@ const CreatePostForm = () => {
                             name='title' 
                             value={title}
                             onChange={onChangeCreateForm} />
-                        </Form.Group>
+                    </Form.Group>
+                    <Form.Group className='mb-3'>
+                        <Form.Control 
+                            type='text' 
+                            placeholder='Slug' 
+                            name='slug' 
+                            value={slug}
+                            onChange={onChangeCreateForm} />
+                    </Form.Group>
                     <Form.Group className='mb-3'>
                         <Form.Control 
                             as='textarea' 

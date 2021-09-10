@@ -34,10 +34,14 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTI4OTU5ZTNjODg3MzM5MjM1Nzc2ZTMiLCJpYXQiOjE2MzAzNDMwNTZ9.gUlWMg7CPS_8VeDCTOriuCgn3UVh2YjUzhF7wp-qq7s
 
 {
-    "position":"tpvinh",
-    "total":5,
+    "position":"quychau",
+    "total":1,
     "death":0,
-    "cured":2
+    "cured":0,
+    "coordinates": {
+        "longitude":105.08340699868768,
+        "latitude":19.500881351046004
+    }
 }
 
 ###

@@ -6,10 +6,17 @@ import Card from 'react-bootstrap/Card'
 import SinglePost from '../components/items/SinglePost'
 import {Link} from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
+import UpdatePostModal from '../components/form/UpdatePostModal'
+import Toast from 'react-bootstrap/Toast'
 
 const PostManager = () => {
 
-    const {postState: {posts, postsLoading}, getPosts} = useContext(PostContext)
+    const {
+        postState: {posts, postsLoading, post}, 
+        getPosts,
+        showToast: {show,message,type},
+        setShowToast
+    } = useContext(PostContext)
 
     useEffect(() => getPosts(), [])
 
@@ -43,6 +50,7 @@ const PostManager = () => {
                 <Table responsive>
                     <thead>
                         <tr>
+                            <th className='text-center'>#</th>
                             <th>Tiêu đề</th>
                             <th>Nội dung</th>
                             <th>Tác giả</th>
@@ -52,7 +60,7 @@ const PostManager = () => {
                     </thead>
                     <tbody>
                         {posts.slice(0).reverse().map(post => (
-							<SinglePost item={post} />
+							<SinglePost key={post._id} item={post} type='post' />
 					    ))}
                     </tbody>
                     
@@ -62,11 +70,34 @@ const PostManager = () => {
     }
 
     return (
-        <div className="mx-4 mt-3">
-            <h1>Danh sách Bài Viết</h1>
-            {createPost}
-            {body}
-        </div>
+        <>
+            {post!==null? <UpdatePostModal />: null}
+            <div className="mx-4 mt-3">
+                <h1>Danh sách Bài Viết</h1>
+                {createPost}
+                {body}
+            </div>
+            <Toast
+				show={show}
+				style={{ 
+                    position: 'fixed', 
+                    top: '15%', 
+                    right: '15px' 
+                }}
+				className={`bg-${type} text-white`}
+				onClose={setShowToast.bind(this, {
+					show: false,
+					message: '',
+					type: null
+				})}
+				delay={2000}
+				autohide
+			>
+				<Toast.Body>
+					<strong>{message}</strong>
+				</Toast.Body>
+			</Toast>
+        </>
     )
 }
 

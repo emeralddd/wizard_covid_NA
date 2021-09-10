@@ -24,6 +24,20 @@ head {
   overflow: auto;
 }
 
+a {
+  text-decoration: none;
+}
+
+.titlePost {
+  background: linear-gradient(to right, #0062e6, #33aeff);
+  padding: 50px;
+  text-align: center;
+}
+
+.titlePost h1 {
+  color: white;
+}
+
 .fix {
   clear: both;
 }
@@ -40,4 +54,9 @@ head {
 
 .group {
   zoom: 1;
+}
+
+span {
+  color: #33aeff;
+  font-size: larger;
 }

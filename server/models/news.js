@@ -17,6 +17,11 @@ const News = new Schema({
         },
         userCreated: {
             type: Schema.Types.Mixed
+        },
+        slug: {
+            type: String,
+            required: true,
+            unique: true
         }
 
     }
