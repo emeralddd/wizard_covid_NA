@@ -31,6 +31,10 @@ connectDB();
 app.use(cors())
 app.use(express.json())
 
+app.get('/', function (req, res) {
+  res.send('hello world')
+})
+
 app.use('/api/auth', authRouter)
 app.use('/api/admin', adminRouter)
 app.use('/api/public', publicRouter)

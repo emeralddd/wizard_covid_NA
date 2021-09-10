@@ -1,5 +1,5 @@
-export const apiURL = process.env.NODE_ENV !== 'production' ? 'http://localhost:3030/api' : 'abc'
-
+export const apiURL = process.env.NODE_ENV !== 'production' ? 'http://localhost:3030/api' : 'https://nacddeu.herokuapp.com/api'
+//http://localhost:3030/api
 export const LOCAL_STORAGE_TOKEN_NAME = 'ncov-admin'
 
 export const USER_LOADED_SUCCESS = 'USER_LOADED_SUCCESS'
