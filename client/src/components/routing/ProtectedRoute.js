@@ -3,9 +3,6 @@ import { useContext } from 'react'
 import { AuthContext } from '../../contexts/authContext'
 import Spinner from 'react-bootstrap/Spinner'
 import AdminNavbarMenu from '../layout/AdminNavbarMenu'
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
-import Container from 'react-bootstrap/Container'
 
 const ProtectedRoute = ({component:Component,...rest}) => {
 

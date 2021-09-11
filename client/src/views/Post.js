@@ -71,7 +71,7 @@ const Post = (props) => {
                 <Row className='mx-auto mt-3'>
                     <Col xs={9}>
                         <div>
-                            <img src={statusState.data[5]} width='90%' height='auto' alt='image' />
+                            <img src={statusState.data[5]} width='90%' height='auto' alt='post_img' />
                         </div>
                         <h3 className='mt-3'>{statusState.data[0]}</h3>
                         <h6>Đăng bởi: {statusState.data[3]} - {dateFormat(statusState.data[2], "hh:mm:ss - dd/mm/yyyy")}</h6>

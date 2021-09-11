@@ -4,9 +4,9 @@ import dateFormat from 'dateformat'
 const SinglePublicPost = ({item: {_id, title, content, dateCreated}}) => {
     let a=0;
     return (
-        <Card className='shadow text-white' bg='warning'>
+        <Card className='shadow detail-pub'>
             <Card.Body>
-                <Card.Header>
+                <Card.Header className='de-head'>
                     {dateFormat(dateCreated, "HH:MM:ss - dd/mm/yyyy")}
                 </Card.Header>
                 <Card.Title className='mt-2'>

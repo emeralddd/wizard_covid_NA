@@ -10,7 +10,6 @@ const CreateUserModal = () => {
         addUser,
         showAddUserModal,
         setShowAddUserModal,
-        showToast,
         setShowToast
     } = useContext(UserContext)
 

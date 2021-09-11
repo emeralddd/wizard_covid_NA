@@ -20,22 +20,14 @@ html,
 body,
 head {
   height: 100%;
-  margin: 0;
+  width: 100%;
+  margin: 0px;
   overflow: auto;
+  font-family: "Varela Round", sans-serif;
 }
 
 a {
   text-decoration: none;
-}
-
-.titlePost {
-  background: linear-gradient(to right, #0062e6, #33aeff);
-  padding: 50px;
-  text-align: center;
-}
-
-.titlePost h1 {
-  color: white;
 }
 
 .fix {
@@ -56,7 +48,135 @@ a {
   zoom: 1;
 }
 
-span {
-  color: #33aeff;
+.navbar-public {
+  background: #fff;
+  text-align: center;
+}
+
+.nav-button {
+  background-color: rgb(53, 176, 247);
+  border: white solid 2px;
+  color: #ffffff;
+  border-radius: 5px;
+}
+
+.nav-button:hover {
+  background-color: transparent;
+  border: rgb(53, 176, 247) solid 2px;
+}
+
+.nav-item {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border-bottom: white solid 1px;
   font-size: larger;
+  color: rgb(83, 90, 109);
+}
+
+.nav-item:hover {
+  border-bottom: rgb(49, 172, 209) solid 2px;
+  color: rgba(255, 255, 255, 100);
+}
+
+.titlePost {
+  padding: 20px;
+  margin-top: 10px;
+  text-align: center;
+  background-color: #007bff;
+  padding: 40px;
+}
+
+.titlePost h1 {
+  color: rgb(232, 233, 247);
+}
+
+.detail-pub {
+  background-color: #eff5ff;
+}
+
+.de-head {
+  color: #003064;
+}
+
+.slider-content {
+  display: block;
+  width: 100%;
+  height: 500px;
+}
+
+.aboutweb {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 100px;
+}
+
+.about-text {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+.infovirus {
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 100px;
+}
+
+.info-text {
+  display: block;
+  padding-top: 50px;
+}
+
+.info-logo-out {
+  position: relative;
+  background: #97c4ff;
+  border-radius: 100%;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  margin-left: 40%;
+  margin-right: 40%;
+  margin-bottom: 10px;
+}
+
+.info-logo-in {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 12.5px;
+  right: 12.5px;
+}
+
+.teams {
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 100px;
+}
+
+.blogs {
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 100px;
+}
+
+.footer {
+  background-color: rgb(232, 237, 241);
+  padding: 50px;
+  margin-top: 50px;
+  color: rgb(0, 0, 0);
+  text-align: right;
+}
+
+.footer p {
+  color: gray;
+}
+
+.copy {
+  background-color: rgb(13, 0, 37);
+  color: rgb(202, 202, 202);
+  padding: 20px;
+  margin-top: 0px !important;
 }

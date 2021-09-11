@@ -4,8 +4,7 @@ import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import {Link} from 'react-router-dom'
 import { AuthContext } from '../../contexts/authContext'
-import {OtherContext} from '../../contexts/otherContext'
-import { useContext,useState } from 'react'
+import { useContext} from 'react'
 import LOGO from '../../assets/logo_bw.png'
 
 

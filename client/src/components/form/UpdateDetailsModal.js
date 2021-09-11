@@ -18,7 +18,7 @@ const UpdateDetailsModal = () => {
 
     useEffect(() => setUpdateForm(detail), [detail])
 
-    const {title,content,imageURL} = updateForm
+    const {title,content} = updateForm
 
     const onChangeUpdateForm = event => setUpdateForm({ ...updateForm, [event.target.name]: event.target.value })
 

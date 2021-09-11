@@ -7,7 +7,7 @@ import {AnalyticContext } from '../../contexts/analyticContext'
 const UpdateAnalyticsModal = () => {
 
     const {
-        analyticState:{analytic,nowAna},
+        analyticState:{nowAna},
         findAnalytic,
         updateAnalytic,
         showUpdateModal,

@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { AuthContext } from '../../contexts/authContext'
 import AdminNavbarSurface from '../layout/AdminNavbarSurface'
 import NavbarPublic from '../layout/NavbarPublic'
-
+import Footer from '../layout/Footer'
 const PublicRoute = ({component:Component,...rest}) => {
 
     const {authState: {isAuthenticated}} = useContext(AuthContext)
@@ -15,6 +15,7 @@ const PublicRoute = ({component:Component,...rest}) => {
                 {isAuthenticated? (<AdminNavbarSurface />) : null}
                 <NavbarPublic />
                 <Component {...rest} {...props} /> 
+                <Footer />
             </>
         )}} />
     )

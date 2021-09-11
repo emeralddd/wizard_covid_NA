@@ -45,9 +45,14 @@ const PandemicDetails = () => {
     }
 
     return (
-        <div className="mx-4 mt-3">
-            {body}
-        </div>
+        <>
+            <div className='titlePost'>
+                    <h1>Diễn Biến Dịch Bệnh</h1>
+            </div>
+            <div className="mx-4 mt-3">
+                {body}
+            </div>
+        </>
     )
 }
 

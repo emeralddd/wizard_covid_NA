@@ -15,8 +15,7 @@ const AnalyticManager = () => {
         getAnalytic,
         setShowToast,
         showToast: {show,message,type},
-        setShowUpdateModal,
-        findAnalytic
+        setShowUpdateModal
     } = useContext(AnalyticContext)
 
     useEffect(() => getAnalytic(), [])

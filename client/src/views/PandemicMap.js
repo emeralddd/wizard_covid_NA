@@ -22,7 +22,7 @@ const PandemicMap = () => {
 
     } else {
         analytic.map((point, index) => {
-            if(point.position!='nghean'&&point.position!='vietnam'&&point.position!='thegioi')
+            if(point.position!=='nghean'&&point.position!=='vietnam'&&point.position!=='thegioi')
             {
                 data.push({
                     type: "Feature",
@@ -155,7 +155,7 @@ const PandemicMap = () => {
 
     if(!analyticLoading) {
         table = <>
-            <Badge bg="success">Nghệ An</Badge>
+            <Badge bg="success" className='mt-4'>Nghệ An</Badge>
             <Table responsive>
                 <thead>
                     <tr>
@@ -175,7 +175,7 @@ const PandemicMap = () => {
                 </tbody>
             </Table>
 
-            <Badge bg="danger">Việt Nam</Badge>
+            <Badge bg="danger" className='mt-4'>Việt Nam</Badge>
             <Table responsive>
                 <thead>
                     <tr>
@@ -195,7 +195,7 @@ const PandemicMap = () => {
                 </tbody>
             </Table>
 
-            <Badge bg="info">Thế giới</Badge>
+            <Badge bg="info" className='mt-4'>Thế giới</Badge>
             <Table responsive>
                 <thead>
                     <tr>
@@ -215,17 +215,17 @@ const PandemicMap = () => {
 
     return (
         <>
+            <div className='titlePost'>
+                <h1>Bản Đồ & Số liệu</h1>
+            </div>
             <div className="maptinhhinh">
                 <div className="mapContainer m-3">
                     <div ref={mapContainer} className="mapBox" />
                 </div>
                 <div className="tinhhinh">
-                    <h4>Tình Hình Dịch Bệnh</h4>
+                    <h3>Tình Hình Dịch Bệnh</h3>
                     {table}
                 </div>
-            </div>
-            <div>
-                <h1>Hello</h1>
             </div>
         </>
     )
