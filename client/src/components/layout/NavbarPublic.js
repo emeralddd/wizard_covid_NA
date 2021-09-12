@@ -53,11 +53,27 @@ const NavbarPublic = () => {
 
             <Offcanvas show={show} onHide={handleClose} placement='end'>
                 <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+                    <Offcanvas.Title>Thông tin liên lạc</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                    Some text as placeholder. In real life you can have the elements you
-                    have chosen. Like, text, images, lists, etc.
+                    Mọi thông tin thêm xin vui lòng liên lạc đến các địa chỉ Facebook của đội ngũ chúng tôi!
+                    <ul>
+                            <li className='mb-3 mt-3'>
+                                <a href="https://www.facebook.com/lehuy.nguyentat.3">Nguyễn Tất Lê huy</a>
+                            </li>
+                            <li className='mb-3'>
+                                <a href="https://www.facebook.com/profile.php?id=100052446913802">Phan Văn Huy</a>
+                            </li>
+                            <li className='mb-3'>
+                                <a href="https://www.facebook.com/darkemeralddd">Nguyễn Khắc Tùng Lâm</a>
+                            </li >
+                            <li className='mb-3'>
+                                <a href="https://www.facebook.com/tuoanh1910">Tú Oanh</a>
+                            </li >
+                            <li className='mb-3'>
+                                <a href="https://www.facebook.com/profile.php?id=100038122106574">Quang Việt</a>
+                            </li>
+                        </ul>
                 </Offcanvas.Body>
             </Offcanvas>
 
