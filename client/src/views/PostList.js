@@ -72,9 +72,14 @@ const PostList = () => {
     }
 
     return (
+        <>
+        <div className='titlePost'>
+                    <h1>BLOG</h1>
+            </div>
         <div className="mx-4 mt-3">
             {body}
         </div>
+        </>
     )
 }
 

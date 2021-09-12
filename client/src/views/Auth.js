@@ -39,7 +39,7 @@ function Auth({authRoute}) {
                             <Card.Body> 
                                 <Row>
                                     <Col sm={7}>
-                                        <Image src='https://i.pinimg.com/originals/39/ce/06/39ce061587549e3ef7f043ddb118f79b.jpg' height='500px' rounded/>
+                                        <Image src='https://i.pinimg.com/originals/fe/f2/27/fef227e61f3211df89cdf39af1c2bf9a.jpg' height='500px' rounded/>
                                     </Col>
                                     <Col sm={5}>
                                         {body}

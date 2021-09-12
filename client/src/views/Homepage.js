@@ -3,6 +3,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import about from '../assets/aboutweb.png'
 import Card from 'react-bootstrap/Card'
+import Badge from 'react-bootstrap/Badge'
 const Homepage = () => {
     return (
         <>
@@ -105,74 +106,58 @@ const Homepage = () => {
                 <h1><strong>ĐỘI NGŨ PHÁT TRIỂN</strong></h1>
                 <Row className='mt-5'>
                     <Col>
-                        <Card.Img variant='top' src='https://luccicorners.files.wordpress.com/2020/12/fb_img_16065522008565854.jpg?w=410&h&zoom=2' />
+                        {/*<Card.Img variant='top' src='https://luccicorners.files.wordpress.com/2020/12/fb_img_16065522008565854.jpg?w=410&h&zoom=2' /> */}
                         <Card border='info'>
                         <Card.Header>
-                            Project Manager
+                            Lập Trình & Nội dung
                         </Card.Header>
-                        <Card.Text>    
-                            <h3>Nguyễn Khắc Tùng Lâm</h3>
-                        </Card.Text>
-                        </Card>
-                    </Col>
-                    <Col>
-                        <Card border='info'>
-                        <Card.Header>
-                            Project Manager
-                        </Card.Header>
-                        <Card.Text>    
-                            <h3>Nguyễn Khắc Tùng Lâm</h3>
+                        <Card.Text style={{height: '120px'}}>  
+                            <Badge bg="warning" className='mb-2 mt-2'>Thành Viên</Badge>    
+                            <h3 className='text-center'>Nguyễn Khắc Tùng Lâm</h3>
                         </Card.Text>
                         </Card>
                     </Col>
                     <Col>
                         <Card border='info'>
                         <Card.Header>
-                            Project Manager
+                            Lập Trình
                         </Card.Header>
-                        <Card.Text>    
-                            <h3>Nguyễn Khắc Tùng Lâm</h3>
+                        <Card.Text style={{height: '120px'}}>  
+                            <Badge bg="warning" className='mb-2 mt-2'>Thành Viên</Badge>  
+                            <h3 className='text-center'>Phan Văn Huy</h3>
                         </Card.Text>
                         </Card>
                     </Col>
                     <Col>
                         <Card border='info'>
                         <Card.Header>
-                            Project Manager
+                            Lập Trình
                         </Card.Header>
-                        <Card.Text>    
-                            <h3>Nguyễn Khắc Tùng Lâm</h3>
+                        <Card.Text style={{height: '120px'}}>    
+                            <Badge bg="success" className='mb-2 mt-2'>Trưởng nhóm</Badge>
+                            <h3 className='text-center'>Nguyễn Tất Lê Huy</h3>
                         </Card.Text>
                         </Card>
                     </Col>
                     <Col>
                         <Card border='info'>
                         <Card.Header>
-                            Project Manager
+                            Nội Dung
                         </Card.Header>
-                        <Card.Text>    
-                            <h3>Nguyễn Khắc Tùng Lâm</h3>
-                        </Card.Text>
-                        </Card>
-                    </Col>
-                </Row>
-            </div>
-            <div className='blogs'> 
-                <h1>Blog</h1>
-                <Row className='mt-5'>
-                    <Col>
-                        <Card.Img variant='top' src='https://luccicorners.files.wordpress.com/2020/12/fb_img_16065522008565854.jpg?w=410&h&zoom=2' />
-                        <Card>
-                        <Card.Text>    
-                            <h3>Lorem</h3>
+                        <Card.Text style={{height: '120px'}}>
+                            <Badge bg="warning" className='mb-2 mt-2'>Thành Viên</Badge>  
+                            <h3 className='text-center'>Trần Quang Việt</h3>
                         </Card.Text>
                         </Card>
                     </Col>
                     <Col>
-                        <Card.Img variant='top' src='https://luccicorners.files.wordpress.com/2020/12/fb_img_16065522008565854.jpg?w=410&h&zoom=2' />
-                        <Card>
-                        <Card.Text>    
-                            <h3>Lorem</h3>
+                        <Card border='info'>
+                        <Card.Header>
+                            Nội Dung
+                        </Card.Header>
+                        <Card.Text style={{height: '120px'}}>    
+                            <Badge bg="warning" className='mb-2 mt-2'>Thành Viên</Badge>  
+                            <h3 className='text-center'>Nguyễn Thị Tú Oanh</h3>
                         </Card.Text>
                         </Card>
                     </Col>

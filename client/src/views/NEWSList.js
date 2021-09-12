@@ -45,9 +45,14 @@ const NEWSList = () => {
     }
 
     return (
+        <>
+        <div className='titlePost'>
+                    <h1>TIN TỨC</h1>
+            </div>
         <div className="mx-4 mt-3">
             {body}
         </div>
+        </>
     )
 }
 
